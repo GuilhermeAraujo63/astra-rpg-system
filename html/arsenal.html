@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.S.T.R.A. - Arsenal & Artefatos</title>
+    <link rel="icon" type="image/png" href="/assets/imagens/interface/A.S.T.R.A.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/arsenal.css"> 
+</head>
+<body>
+
+    <div id="barra-status">
+        <span>AGENTE AUTENTICADO: [ NÍVEL 1 ]</span>
+        <span>STATUS DO SISTEMA: <span class="operacional">OPERACIONAL</span></span>
+        <span>CONEXÃO: SEGURA (SSL-CRYPT)</span>
+    </div>
+
+    <div class="container-dashboard">
+        
+        <aside class="painel-lateral">
+            <div class="logo-container">
+                <a href="/html/dashboard.html">
+                    <img src="/assets/imagens/interface/A.S.T.R.A.png" alt="Logo A.S.T.R.A" style="cursor: pointer;">
+                </a>
+                <h2>A.S.T.R.A. Central</h2>
+            </div>
+            
+            <nav class="menu-agência">
+                <a href="/html/dashboard.html">Terminal Inicial</a>
+                <a href="/html/bestiario.html">Arquivo de Aberrações (Bestiário)</a>
+                <a href="/html/arsenal.html" class="ativo">Arsenal & Artefatos</a>
+                <a href="/html/casos.html">Arquivos de Casos</a>
+                <a href="/html/quadro-pistas.html">Quadro de Pistas Tático</a> 
+                <a href="/html/descriptografia.html">Módulo de Descriptografia</a>
+                <a href="/index.html" class="link-logoff">Encerrar Sessão [LOGOFF]</a>
+            </nav>
+        </aside>
+
+        <main class="conteudo-principal">
+            
+            <section class="bloco-requisicao">
+                <div class="painel-creditos">
+                    <h3>[ CONTROLO DE ALMOXARIFADO ]</h3>
+                    <div class="saldo-agencia">CRÉDITOS DISPONÍVEIS: <span id="creditos-valor">150</span> CR</div>
+                </div>
+                
+                <div class="controles-busca-arsenal">
+                    <input type="text" id="busca-item" placeholder="Procurar equipamento, efeito ou propriedade...">
+                    <div class="abas-categoria">
+                        <button class="btn-aba ativa" data-categoria="todos">TODOS</button>
+                        <button class="btn-aba" data-categoria="tatico">TÁTICO</button>
+                        <button class="btn-aba" data-categoria="armamento">ARMAMENTO</button>
+                        <button class="btn-aba" data-categoria="artefato">ARTEFATOS</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="grade-arsenal">
+                
+                <article class="card-item tatico" data-nome="Lanterna UV Industrial" data-categoria="tatico" data-custo="20">
+                    <div class="foto-item">
+                        <img src="/assets/imagens/Equipamentos/LanternaUV.png" alt="Evidência Fotográfica Lanterna">
+                        <div class="tag-custo">20 CR</div>
+                    </div>
+                    <div class="dados-item">
+                        <h4>Lanterna UV Industrial</h4>
+                        <p class="status-estoque disponivel">ESTOQUE: DISPONÍVEL</p>
+                        <p class="descricao-item"><strong>EFEITO:</strong> Revela pegadas, fluidos ectoplasmáticos e símbolos ocultos invisíveis a olho nu. Causa queimação ligeira em entidades sensíveis à luz.</p>
+                        <button class="btn-requisitar">[ REQUISITAR ITEM ]</button>
+                    </div>
+                </article>
+
+                <article class="card-item armamento" data-nome="Cartuchos de Sal Grosso (x6)" data-categoria="armamento" data-custo="35">
+                    <div class="foto-item">
+                        <img src="/assets/imagens/Equipamentos/CartuchoSal.png" alt="Evidência Fotográfica Munição">
+                        <div class="tag-custo">35 CR</div>
+                    </div>
+                    <div class="dados-item">
+                        <h4>Cartuchos de Sal Grosso (x6)</h4>
+                        <p class="status-estoque disponivel">ESTOQUE: DISPONÍVEL</p>
+                        <p class="descricao-item"><strong>EFEITO:</strong> Munição modificada para caçadeiras. Não causa dano letal a humanos, mas dissipa manifestações físicas e quebra barreiras espirituais temporariamente.</p>
+                        <button class="btn-requisitar">[ REQUISITAR ITEM ]</button>
+                    </div>
+                </article>
+
+                <article class="card-item artefato" data-nome="Relógio do Homem Morto" data-categoria="artefato" data-custo="75">
+                    <div class="foto-item">
+                        <img src="/assets/imagens/Equipamentos/RelogioHomemMorto.png" alt="Evidência Fotográfica Artefato">
+                        <div class="tag-custo">75 CR</div>
+                    </div>
+                    <div class="dados-item">
+                        <h4>Relógio do Homem Morto</h4>
+                        <p class="status-estoque restrito">Classificação: OBJETO AMALDIÇOADO</p>
+                        <p class="descricao-item"><strong>PROPRIEDADE:</strong> Permite desacelerar o tempo local por 3 turnos. <strong>EFEITO COLATERAL:</strong> O utilizador perde 1d6 de Sanidade e envelhece visualmente a cada uso.</p>
+                        <button class="btn-requisitar">[ REQUISITAR ITEM ]</button>
+                    </div>
+                </article>
+
+                <article class="card-item tatico esgotado" data-nome="Inibidor de Frequência" data-categoria="tatico" data-custo="40">
+                    <div class="foto-item">
+                        <div class="bloqueio-camada">ESGOTADO</div>
+                    </div>
+                    <div class="dados-item">
+                        <h4>Inibidor de Frequência Digital</h4>
+                        <p class="status-estoque indisponivel">ESTOQUE: MANUTENÇÃO REQUISITADA</p>
+                        <p class="descricao-item"><strong>EFEITO:</strong> Bloqueia sinais de rádio, microfones e transmissões anómalas num raio de 15 metros. Indisponível no inventário atual da agência.</p>
+                        <button class="btn-requisitar" disabled>[ INDISPONÍVEL ]</button>
+                    </div>
+                </article>
+
+            </section>
+
+            <section class="bloco-manifesto">
+                <h4>[ MANIFESTO DE CARGA DA MISSÃO ]</h4>
+                <div id="lista-manifesto">
+                    <p class="manifesto-vazio">Nenhum equipamento alocado para a missão atual.</p>
+                </div>
+                <div class="rodape-manifesto">
+                    <button class="btn-limpar-manifesto">LIMPAR CARGA</button>
+                    <button class="btn-emitir-manifesto" id="btn-baixar-manifesto">EXTRAIR MANIFESTO (.TXT)</button>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

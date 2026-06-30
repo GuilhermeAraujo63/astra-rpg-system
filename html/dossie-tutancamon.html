@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.S.T.R.A. - Dossiê Confidencial</title>
+    <link rel="icon" type="image/png" href="/assets/imagens/interface/A.S.T.R.A.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/tutancamon-dossie.css"> 
+</head>
+<body>
+
+    <div id="barra-status">
+        <span>AGENTE AUTENTICADO: [ NÍVEL 1 ]</span>
+        <span>STATUS DO SISTEMA: <span class="operacional">OPERACIONAL</span></span>
+        <span>CONEXÃO: SEGURA (SSL-CRYPT)</span>
+    </div>
+
+    <div class="container-dashboard">
+        
+        <aside class="painel-lateral">
+            <div class="logo-container">
+                <a href="/html/dashboard.html">
+                    <img src="/assets/imagens/interface/A.S.T.R.A.png" alt="Logo A.S.T.R.A" style="cursor: pointer;">
+                </a>
+                <h2>A.S.T.R.A. Central</h2>
+            </div>
+            
+            <nav class="menu-agência">
+                <a href="/html/dashboard.html">Terminal Inicial</a>
+                <a href="/html/bestiario.html" class="ativo">Arquivo de Aberrações (Bestiário)</a>
+                <a href="/html/arsenal.html">Arsenal & Artefatos</a>
+                <a href="/html/casos.html">Arquivos de Casos</a>
+                <a href="/html/quadro-pistas.html">Quadro de Pistas Tático</a> 
+                <a href="/html/descriptografia.html">Módulo de Descriptografia</a>
+                <a href="/index.html" class="link-logoff">Encerrar Sessão [LOGOFF]</a>
+            </nav>
+        </aside>
+
+        <main class="conteudo-principal">
+            
+            <section class="visualizador-dossie">
+                
+                <div class="cabecalho-documento">
+                    <div class="info-documento">
+                        <h3>[ ARQUIVO CONFIDENCIAL DESCRIPTOGRAFADO ]</h3>
+                        <p><strong>SUJEITO:</strong> Tutancâmon | <strong>REGISTRO:</strong> #019-AN | <strong>CLASSE:</strong> Delta</p>
+                    </div>
+                    <a href="/html/bestiario.html" class="btn-voltar">⏪ VOLTAR AO BESTIÁRIO</a>
+                </div>
+
+                <div class="moldura-evidencia">
+                    <div class="scanner-linha"></div> <img src="/assets/docs/tutancamon.png" alt="Handout Dossiê de Tutancamon" class="imagem-dossie">
+                </div>
+
+                <div class="painel-acoes">
+                    <p class="alerta-impressao">AVISO: A cópia não autorizada deste documento resulta em eliminação imediata do agente.</p>
+                    <div class="botoes-acao">
+                        <a href="/assets/docs/tutancamon.png" download="ASTRA_Dossie_Tutancamon.png" class="btn-acao">📥 EXTRAIR CÓPIA (BAIXAR)</a>
+                        <button class="btn-acao" onclick="window.print()">🖨️ IMPRIMIR EVIDÊNCIA</button>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

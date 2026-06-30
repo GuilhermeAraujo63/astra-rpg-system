@@ -1,0 +1,147 @@
+/* Centralização absoluta do container principal usando Flexbox */
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    width: 100%;
+    max-width: 450px;
+    padding: 30px;
+    background-color: #050505;
+    border: 1px solid #00ff66;
+    border-radius: 4px;
+    
+    /* Brilho neon ao redor do painel de login */
+    box-shadow: 0 0 15px rgba(0, 255, 102, 0.2);
+    text-align: center;
+}
+
+/* Cabeçalho de Identificação */
+header img {
+    max-width: 120px;
+    height: auto;
+    margin-bottom: 20px;
+    /* Filtro para deixar a imagem ligeiramente esverdeada se for branca */
+    filter: drop-shadow(0 0 5px rgba(0, 255, 102, 0.5)); 
+}
+
+header h1 {
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+    text-shadow: 0 0 5px #00ff66;
+}
+
+header h2 {
+    font-size: 0.85rem;
+    color: #00aa44; /* Verde mais escuro para hierarquia */
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+/* Formulário e Estrutura dos Campos */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 8px;
+}
+
+.campo label {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Estilização dos Inputs (Estilo Terminal) */
+.campo input {
+    background-color: #111111;
+    border: 1px solid #00aa44;
+    padding: 12px;
+    color: #00ff66;
+    font-family: inherit;
+    font-size: 1rem;
+    border-radius: 2px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Quando o jogador clica para digitar no campo */
+.campo input:focus {
+    border-color: #00ff66;
+    box-shadow: 0 0 8px rgba(0, 255, 102, 0.5);
+    background-color: #001104;
+}
+
+/* Customização do texto temporário (placeholder) */
+.campo input::placeholder {
+    color: #004411;
+}
+
+/* Estilização do Botão de Autenticação */
+button[type="submit"] {
+    background-color: #00ff66;
+    color: #000000;
+    border: none;
+    padding: 14px;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+    margin-top: 10px;
+}
+
+button[type="submit"]:hover {
+    background-color: #000000;
+    color: #00ff66;
+    border: 1px solid #00ff66;
+    box-shadow: 0 0 10px #00ff66;
+}
+
+button[type="submit"]:active {
+    background-color: #003311;
+}
+
+/* Área de Alerta de Erro (Acesso Negado) */
+#mensagemErro {
+    margin-top: 25px;
+    padding: 10px;
+    border: 1px dashed #ff3333;
+    background-color: rgba(255, 51, 51, 0.1);
+}
+
+#mensagemErro p {
+    color: #ff3333;
+    font-size: 0.9rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+    text-shadow: 0 0 5px #ff3333;
+    animation: piscar 1.5s infinite;
+}
+
+/* Rodapé Estético da Página */
+footer {
+    margin-top: 30px;
+    font-size: 0.7rem;
+    color: #00aa44;
+    letter-spacing: 1px;
+}
+
+/* Animação para fazer o texto de erro piscar como um alerta real */
+@keyframes piscar {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+}

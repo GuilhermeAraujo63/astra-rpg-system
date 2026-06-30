@@ -1,0 +1,325 @@
+/* 1. Bloco Superio de Requisições e Saldo */
+.bloco-requisicao {
+    background-color: #050505;
+    border: 1px solid #005522;
+    padding: 20px;
+    margin-bottom: 25px;
+    border-radius: 2px;
+}
+
+.painel-creditos {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed #005522;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+
+.painel-creditos h3 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.saldo-agencia {
+    font-family: inherit;
+    font-weight: bold;
+    color: #00ff66;
+    background-color: #001104;
+    padding: 8px 15px;
+    border: 1px solid #00aa44;
+    text-shadow: 0 0 5px #00ff66;
+    box-shadow: inset 0 0 5px rgba(0, 255, 102, 0.2);
+}
+
+/* Controles de Busca e Abas */
+.controles-busca-arsenal {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#busca-item {
+    width: 100%;
+    background-color: #000000;
+    border: 1px solid #00aa44;
+    color: #00ff66;
+    padding: 12px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    outline: none;
+}
+
+#busca-item:focus {
+    border-color: #00ff66;
+    box-shadow: 0 0 10px rgba(0, 255, 102, 0.2);
+}
+
+.abas-categoria {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.btn-aba {
+    background-color: transparent;
+    color: #00aa44;
+    border: 1px solid #00aa44;
+    padding: 8px 16px;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-aba:hover, .btn-aba.ativa {
+    background-color: #00aa44;
+    color: #000000;
+    box-shadow: 0 0 10px rgba(0, 255, 102, 0.3);
+}
+
+/* 2. Grade de Equipamentos (Cards) */
+.grade-arsenal {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+.card-item {
+    display: flex;
+    flex-direction: column;
+    background-color: #050505;
+    border: 1px solid #005522;
+    overflow: hidden;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.card-item:hover {
+    transform: translateY(-2px);
+    border-color: #00aa44;
+}
+
+/* Imagem com Visão Noturna */
+.foto-item {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    background-color: #000000;
+    border-bottom: 1px solid #005522;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.foto-item img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    opacity: 0.7;
+    filter: grayscale(100%) sepia(100%) hue-rotate(85deg) brightness(0.9) contrast(140%);
+}
+
+.card-item:hover .foto-item img {
+    opacity: 0.9;
+    filter: grayscale(100%) sepia(100%) hue-rotate(85deg) brightness(1.1) contrast(160%);
+}
+
+/* Preço no canto do Card */
+.tag-custo {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #00aa44;
+    color: #000000;
+    font-weight: bold;
+    font-size: 0.8rem;
+    padding: 3px 8px;
+    border-radius: 2px;
+}
+
+/* Textos e Dados dos Equipamentos */
+.dados-item {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 1;
+}
+
+.dados-item h4 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    border-bottom: 1px dashed #002208;
+    padding-bottom: 5px;
+}
+
+.descricao-item {
+    font-size: 0.8rem;
+    color: #00aa44;
+    line-height: 1.4;
+    margin-bottom: 10px;
+}
+
+.descricao-item strong {
+    color: #00ff66;
+}
+
+/* Indicadores de Status de Estoque */
+.status-estoque {
+    font-size: 0.75rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.status-estoque.disponivel { color: #00ff66; }
+.status-estoque.restrito { color: #ff3333; }
+.status-estoque.indisponivel { color: #555555; }
+
+/* Botão de Requisição */
+.btn-requisitar {
+    margin-top: auto;
+    background-color: transparent;
+    border: 1px solid #00aa44;
+    color: #00aa44;
+    padding: 8px;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.btn-requisitar:hover:not(:disabled) {
+    background-color: #002208;
+    color: #00ff66;
+    border-color: #00ff66;
+}
+
+/* Customização de Itens Esgotados */
+.card-item.esgotado {
+    border-color: #222222;
+}
+
+.bloqueio-camada {
+    color: #555555;
+    font-weight: bold;
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+}
+
+.card-item.esgotado h4, .card-item.esgotado .descricao-item {
+    color: #444444 !important;
+}
+
+.btn-requisitar:disabled {
+    border-color: #222222;
+    color: #444444;
+    cursor: not-allowed;
+}
+
+/* 3. Secção do Manifesto de Carga (O Carrinho Tático) */
+.bloco-manifesto {
+    background-color: #020202;
+    border: 1px solid #00ff66;
+    padding: 20px;
+    border-radius: 2px;
+    box-shadow: 0 0 15px rgba(0, 255, 102, 0.05);
+}
+
+.bloco-manifesto h4 {
+    color: #00ff66;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #00ff66;
+    padding-bottom: 5px;
+}
+
+#lista-manifesto {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 50px;
+    margin-bottom: 15px;
+}
+
+.manifesto-vazio {
+    font-size: 0.85rem;
+    color: #005522;
+    font-style: italic;
+}
+
+/* Elemento gerado ao adicionar item ao manifesto */
+.item-manifesto-linha {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #001104;
+    border: 1px dashed #00aa44;
+    padding: 8px 12px;
+    font-size: 0.85rem;
+    color: #00ff66;
+}
+
+.btn-remover-item {
+    background: transparent;
+    border: none;
+    color: #ff3333;
+    font-family: inherit;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.rodape-manifesto {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.btn-limpar-manifesto {
+    background-color: transparent;
+    color: #ff3333;
+    border: 1px solid #ff3333;
+    padding: 10px 15px;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-emitir-manifesto {
+    background-color: #00aa44;
+    color: #000000;
+    border: 1px solid #00ff66;
+    padding: 10px 20px;
+    font-family: inherit;
+    font-size: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-emitir-manifesto:hover {
+    background-color: #00ff66;
+    box-shadow: 0 0 15px rgba(0, 255, 102, 0.4);
+}
+
+/* Ajuste de Impressão para o Manifesto virar um Handout Real */
+@media print {
+    body * { visibility: hidden; }
+    .bloco-manifesto, .bloco-manifesto * { visibility: visible; }
+    .bloco-manifesto {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        border: 1px solid #000;
+        color: #000;
+        background: #fff;
+    }
+    .rodape-manifesto { display: none; }
+    .btn-remover-item { display: none; }
+}

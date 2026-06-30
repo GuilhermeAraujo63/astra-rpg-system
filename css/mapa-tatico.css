@@ -1,0 +1,207 @@
+/* ==========================================================================
+   GRID TÁTICO DE OPERAÇÕES - A.S.T.R.A. SYSTEM (MATRIZ DE RASTREAMENTO)
+   ========================================================================== */
+
+.container-mapa-geral {
+    width: 100%;
+    background-color: #030303;
+    border: 1px solid var(--verde-terminal, #00aa44);
+    padding: 25px;
+    border-radius: 4px;
+}
+
+.topo-mapa {
+    margin-bottom: 20px;
+    border-bottom: 1px dashed #005522;
+    padding-bottom: 15px;
+}
+
+.topo-mapa h2 {
+    color: #00ff66;
+    font-size: 1.3rem;
+    letter-spacing: 2px;
+    margin-bottom: 5px;
+}
+
+.topo-mapa p {
+    color: #00aa44;
+    font-size: 0.9rem;
+}
+
+/* CONTAINER DO MAPA */
+.mapa-wrapper {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    background-color: #000;
+    border: 1px solid #005522;
+    overflow: hidden; 
+    box-shadow: inset 0 0 20px rgba(0, 255, 102, 0.1);
+}
+
+.img-mapa-fundo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    opacity: 0.5; 
+    filter: sepia(100%) hue-rotate(85deg) brightness(0.6) contrast(120%); 
+}
+
+/* GRID DE LINHAS SOBREPOSTAS (Efeito Radar) */
+.overlay-grid {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-image: 
+        linear-gradient(rgba(0, 255, 102, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 102, 0.1) 1px, transparent 1px);
+    background-size: 40px 40px;
+    pointer-events: none; 
+}
+
+/* ==========================================================================
+   MARCADORES TÁTICOS (PINOS E RADARES)
+   ========================================================================== */
+.marcador-tatico {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: #ffaa00; /* Laranja (Isolado/Alerta) */
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    cursor: crosshair;
+    z-index: 10;
+}
+
+.marcador-alerta {
+    background-color: #ff3333; /* Vermelho (Perigo) */
+}
+
+.marcador-seguro {
+    background-color: #00ff66; /* Verde (Seguro) */
+}
+
+/* Efeito do anel piscando */
+.pulso-radar {
+    position: absolute;
+    top: -10px; left: -10px; right: -10px; bottom: -10px;
+    border: 2px solid #ffaa00;
+    border-radius: 50%;
+    animation: pulsar 2s infinite ease-out;
+}
+
+.pulso-vermelho { border-color: #ff3333; }
+.pulso-verde-claro { border-color: #00ff66; }
+
+/* Rótulo de texto abaixo do marcador */
+.label-marcador {
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000;
+    border: 1px solid currentColor;
+    color: inherit;
+    padding: 2px 6px;
+    font-size: 0.7rem;
+    font-family: 'Courier New', monospace;
+    white-space: nowrap;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+
+.marcador-tatico:hover .label-marcador {
+    opacity: 1;
+    z-index: 20;
+    background: #111;
+}
+
+/* ==========================================================================
+   MODAL DE INFORMAÇÕES (A janela que abre ao clicar)
+   ========================================================================== */
+.modal-tatico-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(3px);
+}
+
+.modal-tatico-conteudo {
+    background-color: #050505;
+    border: 1px solid #00ff66;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 0 30px rgba(0, 255, 102, 0.2);
+    animation: glitchIn 0.2s ease-out;
+}
+
+.modal-cabecalho {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #001104;
+    border-bottom: 1px solid #005522;
+    padding: 15px 20px;
+}
+
+.modal-cabecalho h3 {
+    color: #00ff66;
+    margin: 0;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.btn-fechar-modal {
+    background: transparent;
+    border: 1px solid #00ff66;
+    color: #00ff66;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 5px 10px;
+    transition: all 0.2s;
+}
+
+.btn-fechar-modal:hover {
+    background: #00ff66;
+    color: #000;
+}
+
+.modal-corpo {
+    padding: 25px;
+}
+
+.tag-status-modal {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px dashed;
+    font-weight: bold;
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+}
+
+#modal-descricao {
+    color: #fff;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+}
+
+/* Animações */
+@keyframes pulsar {
+    0% { transform: scale(0.5); opacity: 1; }
+    100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes glitchIn {
+    0% { transform: scale(0.9); opacity: 0; }
+    50% { transform: scale(1.02); opacity: 0.8; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+/* RESPONSIVO BÁSICO PARA O MAPA */
+@media screen and (max-width: 768px) {
+    .mapa-wrapper { height: 400px; }
+}

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.S.T.R.A. - Quadro de Pistas</title>
+    <link rel="icon" type="image/png" href="/assets/imagens/interface/A.S.T.R.A.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/quadro-pistas.css"> 
+    <link rel="stylesheet" href="/css/responsivo.css"> 
+</head>
+<body>
+
+    <div id="barra-status">
+        <span>AGENTE AUTENTICADO: [ NÍVEL 1 ]</span>
+        <span>STATUS DO SISTEMA: <span class="operacional">OPERACIONAL</span></span>
+        <span>CONEXÃO: SEGURA (SSL-CRYPT)</span>
+    </div>
+
+    <div class="container-dashboard">
+        
+        <aside class="painel-lateral">
+            <div class="logo-container">
+                <a href="/html/dashboard.html">
+                    <img src="/assets/imagens/interface/A.S.T.R.A.png" alt="Logo A.S.T.R.A" style="cursor: pointer;">
+                </a>
+                <h2>A.S.T.R.A. Central</h2>
+            </div>
+            
+            <nav class="menu-agência">
+                <a href="/html/dashboard.html">Terminal Inicial</a>
+                <a href="/html/bestiario.html">Arquivo de Aberrações (Bestiário)</a>
+                <a href="/html/arsenal.html">Arsenal & Artefatos</a>
+                <a href="/html/casos.html">Arquivos de Casos</a>
+                <a href="/html/quadro-pistas.html" class="ativo">Quadro de Pistas Tático</a> 
+                <a href="/html/descriptografia.html">Módulo de Descriptografia</a>
+                <a href="/index.html" class="link-logoff">Encerrar Sessão [LOGOFF]</a>
+            </nav>
+        </aside>
+
+        <main class="conteudo-principal" style="display: flex; flex-direction: column; height: 90vh;">
+            
+            <div class="topo-quadro">
+                <div>
+                    <h2>[ PAINEL DE CONEXÕES LÓGICAS ]</h2>
+                    <p style="color: #00aa44; font-size: 0.85rem; margin-top: 5px;">Arraste itens, adicione fotos da investigação e trace as linhas de evidência.</p>
+                </div>
+                
+                <div class="ferramentas-quadro">
+                    <button class="btn-ferramenta" onclick="adicionarNota()">+ NOTA DE TEXTO</button>
+                    
+                    <input type="file" id="upload-imagem" accept="image/*" style="display: none;" onchange="adicionarImagem(event)">
+                    <button class="btn-ferramenta" onclick="document.getElementById('upload-imagem').click()">+ ANEXAR FOTO</button>
+                    
+                    <div class="divisor-ferramenta"></div>
+                    
+                    <button class="btn-ferramenta btn-fio vermelho" onclick="ativarModoLinha('#ff3333', this)">🔗 FIO VERMELHO</button>
+                    <button class="btn-ferramenta btn-fio verde" onclick="ativarModoLinha('#00ff66', this)">🔗 FIO VERDE</button>
+                    <button class="btn-ferramenta btn-fio amarelo" onclick="ativarModoLinha('#ffaa00', this)">🔗 FIO AMARELO</button>
+                    
+                    <div class="divisor-ferramenta"></div>
+                    <button class="btn-ferramenta btn-perigo" onclick="ativarModoExcluir(this)">🗑️ MODO EXCLUIR</button>
+                </div>
+            </div>
+
+            <div id="area-quadro" class="area-quadro">
+                <svg id="camada-linhas"></svg>
+                
+                <div class="item-quadro nota-texto" style="top: 50px; left: 50px;" id="item-inicial">
+                    <div class="arrastador">≡ Mover</div>
+                    <div class="conteudo-editavel" contenteditable="true">Quem é o sujeito Tutancâmon?</div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+        const areaQuadro = document.getElementById('area-quadro');
+        const camadaLinhas = document.getElementById('camada-linhas');
+        let contadorItens = 1;
+
+        let linhas = [];
+        let modoConexao = false;
+        let corAtualLinha = '';
+        let itemSelecionadoParaConectar = null;
+        let modoExcluir = false;
+
+        tornarArrastavel(document.getElementById('item-inicial'));
+
+        function adicionarNota() {
+            contadorItens++;
+            const novaNota = document.createElement('div');
+            novaNota.className = 'item-quadro nota-texto';
+            novaNota.id = 'item-' + contadorItens;
+            novaNota.style.top = '100px';
+            novaNota.style.left = '100px';
+            
+            novaNota.innerHTML = `
+                <div class="arrastador">≡ Mover</div>
+                <div class="conteudo-editavel" contenteditable="true">Nova evidência...</div>
+            `;
+            
+            areaQuadro.appendChild(novaNota);
+            tornarArrastavel(novaNota);
+        }
+
+        function adicionarImagem(event) {
+            const arquivo = event.target.files[0];
+            if (!arquivo) return;
+
+            const leitor = new FileReader();
+            leitor.onload = function(e) {
+                contadorItens++;
+                const novaFoto = document.createElement('div');
+                novaFoto.className = 'item-quadro foto-evidencia';
+                novaFoto.id = 'item-' + contadorItens;
+                novaFoto.style.top = '100px';
+                novaFoto.style.left = '150px';
+                
+                novaFoto.innerHTML = `
+                    <div class="arrastador">≡ Mover</div>
+                    <img src="${e.target.result}" alt="Evidência">
+                `;
+                
+                areaQuadro.appendChild(novaFoto);
+                tornarArrastavel(novaFoto);
+            }
+            leitor.readAsDataURL(arquivo);
+            event.target.value = '';
+        }
+
+        function ativarModoLinha(cor, btnElement) {
+            if (btnElement.classList.contains('ferramenta-ativa')) {
+                desativarModos();
+                return;
+            }
+            desativarModos();
+            modoConexao = true;
+            corAtualLinha = cor;
+            btnElement.classList.add('ferramenta-ativa');
+            areaQuadro.style.cursor = 'crosshair';
+        }
+
+        function ativarModoExcluir(btnElement) {
+            if (btnElement.classList.contains('ferramenta-ativa')) {
+                desativarModos();
+                return;
+            }
+            desativarModos();
+            modoExcluir = true;
+            btnElement.classList.add('ferramenta-ativa');
+            areaQuadro.style.cursor = 'not-allowed';
+        }
+
+        function desativarModos() {
+            modoConexao = false;
+            modoExcluir = false;
+            itemSelecionadoParaConectar = null;
+            areaQuadro.style.cursor = 'default';
+            
+            document.querySelectorAll('.btn-ferramenta').forEach(btn => btn.classList.remove('ferramenta-ativa'));
+            document.querySelectorAll('.item-quadro').forEach(item => item.classList.remove('item-selecionado'));
+        }
+
+        function clicarNoItem(elemento) {
+            if (modoExcluir) {
+                elemento.remove();
+                linhas = linhas.filter(l => l.de !== elemento && l.para !== elemento);
+                desenharLinhas();
+                return;
+            }
+
+            if (modoConexao) {
+                if (!itemSelecionadoParaConectar) {
+                    itemSelecionadoParaConectar = elemento;
+                    elemento.classList.add('item-selecionado');
+                } else {
+                    if (itemSelecionadoParaConectar !== elemento) {
+                        linhas.push({ de: itemSelecionadoParaConectar, para: elemento, cor: corAtualLinha });
+                        desenharLinhas();
+                    }
+                    itemSelecionadoParaConectar.classList.remove('item-selecionado');
+                    itemSelecionadoParaConectar = null;
+                }
+            }
+        }
+
+        function desenharLinhas() {
+            camadaLinhas.innerHTML = '';
+            linhas.forEach(linha => {
+                const x1 = linha.de.offsetLeft + (linha.de.offsetWidth / 2);
+                const y1 = linha.de.offsetTop + (linha.de.offsetHeight / 2);
+                const x2 = linha.para.offsetLeft + (linha.para.offsetWidth / 2);
+                const y2 = linha.para.offsetTop + (linha.para.offsetHeight / 2);
+
+                const elementoLinha = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+                elementoLinha.setAttribute('x1', x1);
+                elementoLinha.setAttribute('y1', y1);
+                elementoLinha.setAttribute('x2', x2);
+                elementoLinha.setAttribute('y2', y2);
+                elementoLinha.setAttribute('stroke', linha.cor);
+                elementoLinha.setAttribute('stroke-width', '3');
+                elementoLinha.setAttribute('stroke-dasharray', '5,5');
+                camadaLinhas.appendChild(elementoLinha);
+            });
+        }
+
+        function tornarArrastavel(elemento) {
+            const arrastador = elemento.querySelector('.arrastador');
+            let pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+
+            elemento.onclick = (e) => {
+                if(e.target.classList.contains('conteudo-editavel')) return; 
+                clicarNoItem(elemento);
+            };
+
+            arrastador.onmousedown = (e) => {
+                if(modoConexao || modoExcluir) return;
+                e.preventDefault();
+                pos3 = e.clientX;
+                pos4 = e.clientY;
+                document.onmouseup = () => { document.onmouseup = null; document.onmousemove = null; };
+                document.onmousemove = (e) => {
+                    e.preventDefault();
+                    pos1 = pos3 - e.clientX;
+                    pos2 = pos4 - e.clientY;
+                    pos3 = e.clientX;
+                    pos4 = e.clientY;
+                    elemento.style.top = (elemento.offsetTop - pos2) + "px";
+                    elemento.style.left = (elemento.offsetLeft - pos1) + "px";
+                    desenharLinhas();
+                };
+                document.querySelectorAll('.item-quadro').forEach(el => el.style.zIndex = "10");
+                elemento.style.zIndex = "20";
+            };
+        }
+    </script>
+</body>
+</html>

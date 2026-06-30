@@ -1,0 +1,256 @@
+/* ==========================================================================
+   ARQUIVO DE ABERRAÇÕES (BESTIÁRIO) - A.S.T.R.A. SYSTEM
+   ========================================================================== */
+
+/* 1. Bloco de Pesquisa Forense */
+.controles-busca {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.controles-busca input[type="text"],
+.controles-busca select {
+    flex: 1;
+    min-width: 200px;
+    background-color: #050505;
+    border: 1px solid #00aa44;
+    color: #00ff66;
+    padding: 12px 15px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    border-radius: 2px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.controles-busca input[type="text"]::placeholder {
+    color: #005522;
+}
+
+.controles-busca input:focus,
+.controles-busca select:focus {
+    border-color: #00ff66;
+    box-shadow: 0 0 10px rgba(0, 255, 102, 0.3);
+    background-color: #001104;
+}
+
+.btn-buscar {
+    background-color: #00aa44;
+    color: #000000;
+    border: 1px solid #00ff66;
+    padding: 12px 25px;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+}
+
+.btn-buscar:hover {
+    background-color: #00ff66;
+    box-shadow: 0 0 15px rgba(0, 255, 102, 0.4);
+}
+
+.btn-buscar:active {
+    background-color: #005522;
+}
+
+/* 2. Grade de Fichas de Criaturas */
+.grade-bestiario {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+    width: 100%;
+}
+
+/* 3. Estilo Base do Cartão do Monstro */
+.ficha-monstro {
+    display: flex;
+    flex-direction: column;
+    background-color: #050505;
+    border: 1px solid #005522;
+    border-radius: 2px;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ficha-monstro:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 255, 102, 0.15);
+    border-color: #00aa44;
+}
+
+/* 4. Área da Foto de Evidência */
+.foto-evidencia {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    background-color: #000000;
+    border-bottom: 1px solid #005522;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.foto-evidencia img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    filter: grayscale(100%) sepia(100%) hue-rotate(75deg) brightness(0.9) contrast(150%);
+    transition: all 0.3s ease;
+}
+
+.ficha-monstro:hover .foto-evidencia img {
+    opacity: 1;
+    filter: grayscale(100%) sepia(100%) hue-rotate(75deg) brightness(1.2) contrast(170%);
+}
+
+/* Tarja de Classificação (Base Estrutural) */
+.tarja-classificacao {
+    position: absolute;
+    top: 15px;
+    right: -20px;
+    color: #000000;
+    font-weight: bold;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    padding: 5px 30px;
+    text-transform: uppercase;
+    transform: rotate(45deg);
+}
+
+/* Mapeamento de Cores das Tarjas por Classe */
+.ficha-monstro.alfa .tarja-classificacao {
+    background-color: #00ff66;
+    box-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
+}
+
+.ficha-monstro.beta .tarja-classificacao {
+    background-color: #00f0ff; /* Azul Frio */
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.5);
+}
+
+.ficha-monstro.delta .tarja-classificacao {
+    background-color: #ff3333; /* Vermelho Alerta */
+    box-shadow: 0 0 10px rgba(255, 51, 51, 0.5);
+}
+
+.ficha-monstro.omega .tarja-classificacao {
+    background-color: #ff0055; /* Magenta/Carmesim Crítico */
+    box-shadow: 0 0 10px rgba(255, 0, 85, 0.5);
+}
+
+/* 5. Dados da Criatura */
+.dados-monstro {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex: 1;
+}
+
+.dados-monstro h4 {
+    font-size: 1.2rem;
+    color: #ffffff;
+    letter-spacing: 1px;
+    border-bottom: 1px dashed #005522;
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+}
+
+.dados-monstro p {
+    font-size: 0.85rem;
+    color: #00aa44;
+    line-height: 1.5;
+}
+
+.registro strong, .status-ativo strong, .status-neutralizado strong {
+    color: #00ff66;
+}
+
+.status-ativo {
+    color: #ff3333 !important; /* Vermelho para perigo ativo */
+}
+
+.status-neutralizado {
+    color: #00f0ff !important; /* Azul para caso resolvido */
+}
+
+.descricao-curta {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+/* 6. Botão de Acesso ao Dossiê */
+.btn-dossie {
+    margin-top: auto;
+    display: block;
+    text-align: center;
+    background-color: transparent;
+    color: #00aa44;
+    border: 1px dashed #00aa44;
+    padding: 10px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    transition: all 0.2s ease;
+}
+
+.btn-dossie:hover {
+    background-color: #002208;
+    color: #00ff66;
+    border: 1px solid #00ff66;
+    box-shadow: inset 0 0 10px rgba(0, 255, 102, 0.2);
+}
+
+/* 7. Fichas Confidenciais / Restritas */
+.ficha-monstro.confidencial {
+    border-color: #333333;
+}
+
+.ficha-monstro.confidencial:hover {
+    box-shadow: none;
+    transform: none;
+    border-color: #555555;
+}
+
+.foto-evidencia.bloqueada {
+    background-color: #050505;
+    background-image: repeating-linear-gradient(
+        45deg,
+        #050505,
+        #050505 10px,
+        #0a0a0a 10px,
+        #0a0a0a 20px
+    );
+}
+
+.icone-cadeado {
+    font-size: 3rem;
+    opacity: 0.3;
+}
+
+.ficha-monstro.confidencial h4,
+.ficha-monstro.confidencial p,
+.ficha-monstro.confidencial strong {
+    color: #555555 !important;
+}
+
+.btn-dossie.bloqueado {
+    border-color: #333333;
+    color: #555555;
+    cursor: not-allowed;
+}
+
+.btn-dossie.bloqueado:hover {
+    background-color: transparent;
+    box-shadow: none;
+}

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login A.S.T.R.A - Terminal de Comando</title>
+    <link rel="icon" type="image/png" href="/assets/imagens/interface/A.S.T.R.A.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/login.css">
+</head>
+<body>
+
+    <main>
+        <header>
+            <img src="/assets/imagens/interface/A.S.T.R.A.png" alt="Logo Oficial A.S.T.R.A">
+            <h1>A.S.T.R.A - Terminal de Comando</h1>
+            <h2>Restrito a agentes nível 1 ou superior</h2>
+        </header>
+
+        <form id="loginForm">
+            <div class="campo">
+                <label for="usuario">Identificação da Equipe:</label>
+                <input type="text" id="usuario" placeholder="Ex: Alfa25" required>
+            </div>
+
+            <div class="campo">
+                <label for="senha">Chave de Acesso:</label>
+                <input type="password" id="senha" placeholder="••••••••••••" required>
+            </div>
+
+            <button type="submit">Autenticar</button>
+        </form>
+
+        <div id="mensagemErro" class="oculto">
+            <p>[ACESSO NEGADO - TENTATIVA REGISTRADA]</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>A.S.T.R.A. OS v4.0.2 // Terminal Conectado via Linha Segura // Criado por DarkCipher</p>
+    </footer>
+
+    <script src="/js/auth.js"></script>
+</body>
+</html>

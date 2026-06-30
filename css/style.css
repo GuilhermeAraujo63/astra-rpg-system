@@ -1,0 +1,142 @@
+/* Reset de margens e padding para consistência em todos os navegadores */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Configuração do plano de fundo e tipografia estilo terminal */
+body {
+    background-color: #000000;
+    color: #00ff66; /* Verde-fósforo clássico */
+    font-family: 'Courier New', Consolas, Monaco, monospace;
+    min-height: 100vh;
+    overflow-x: hidden;
+    
+    /* Efeito sutil de linhas de varredura CRT (TV antiga) */
+    background-image: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+                      linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 4px, 6px 100%;
+}
+
+/* Utilitário para esconder elementos (como a mensagem de erro inicial) */
+.oculto {
+    display: none !important;
+}
+
+/* ==========================================================================
+   PROTOCOLO MOBILE - A.S.T.R.A. SYSTEM (Telas menores que 768px)
+   ========================================================================== */
+
+@media screen and (max-width: 768px) {
+    
+    /* 1. O Menu Lateral vira um Menu Superior */
+    .container-dashboard {
+        flex-direction: column !important;
+        display: flex;
+    }
+
+    .painel-lateral {
+        width: 100% !important;
+        height: auto !important;
+        position: relative !important;
+        border-right: none !important;
+        border-bottom: 2px solid var(--verde-terminal, #00aa44);
+        padding: 15px;
+    }
+
+    .menu-agência {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        margin-top: 15px;
+    }
+
+    .menu-agência a {
+        flex: 1 1 45%; 
+        text-align: center;
+        padding: 10px 5px;
+        font-size: 0.8rem;
+    }
+
+    .conteudo-principal {
+        margin-left: 0 !important;
+        width: 100% !important;
+        padding: 15px !important;
+    }
+
+    /* 2. Dossiê de Casos: Ajuste das Abas e Topo */
+    .topo-dossie {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .btn-voltar-diretorio {
+        width: 100%;
+        text-align: center;
+    }
+
+    .abas-dossie {
+        flex-direction: column;
+        gap: 5px;
+        border-bottom: none;
+    }
+
+    .aba-btn {
+        width: 100%;
+        border-radius: 4px;
+        border-bottom: 1px solid #005522 !important;
+    }
+
+    .aba-btn.ativa {
+        border-color: #00aa44 !important;
+    }
+
+    /* 3. Dossiê de Casos: Vítimas e Evidências em 1 Coluna */
+    .card-vitima {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .grade-evidencias {
+        grid-template-columns: 1fr; 
+    }
+
+    /* 4. Telas de Criptografia e Autenticação */
+    .alerta-bloqueio-conclusao {
+        padding: 15px !important;
+    }
+
+    .input-terminal-cripto, 
+    .btn-terminal-cripto, 
+    .btn-submissao-log,
+    #btn-biometria {
+        width: 100% !important; 
+        max-width: 100%;
+    }
+
+    /* 5. Terminal de Descriptografia Manual (Teclado Rúnico) */
+    .controles-visor {
+        flex-direction: column;
+    }
+
+    .btn-controle {
+        width: 100%;
+    }
+
+    .teclado-runico {
+        grid-template-columns: repeat(4, 1fr) !important; 
+        gap: 8px;
+        padding: 10px;
+    }
+
+    .tecla-runa {
+        padding: 5px;
+    }
+
+    .tecla-runa img {
+        height: 35px; 
+    }
+}

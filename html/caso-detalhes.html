@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.S.T.R.A. - Dossiê do Caso #019-AN</title>
+    <link rel="icon" type="image/png" href="/assets/imagens/interface/A.S.T.R.A.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/casos.css"> 
+    <link rel="stylesheet" href="/css/caso-detalhes.css"> 
+    <link rel="stylesheet" href="/css/mapa-tatico.css"> 
+    <link rel="stylesheet" href="/css/responsivo.css"> 
+</head>
+<body>
+
+    <div id="barra-status">
+        <span>AGENTE AUTENTICADO: [ NÍVEL 1 ]</span>
+        <span>STATUS DO SISTEMA: <span class="operacional">OPERACIONAL</span></span>
+        <span>CONEXÃO: SEGURA (SSL-CRYPT)</span>
+    </div>
+
+    <div class="container-dashboard">
+        
+        <aside class="painel-lateral">
+            <div class="logo-container">
+                <a href="/html/dashboard.html">
+                    <img src="/assets/imagens/interface/A.S.T.R.A.png" alt="Logo A.S.T.R.A" style="cursor: pointer;">
+                </a>
+                <h2>A.S.T.R.A. Central</h2>
+            </div>
+            
+            <nav class="menu-agência">
+                <a href="/html/dashboard.html">Terminal Inicial</a>
+                <a href="/html/bestiario.html">Arquivo de Aberrações (Bestiário)</a>
+                <a href="/html/arsenal.html">Arsenal & Artefatos</a>
+                <a href="/html/casos.html" class="ativo">Arquivos de Casos</a>
+                <a href="/html/quadro-pistas.html">Quadro de Pistas Tático</a> 
+                <a href="/html/descriptografia.html">Módulo de Descriptografia</a>
+                <a href="/index.html" class="link-logoff">Encerrar Sessão [LOGOFF]</a>
+            </nav>
+        </aside>
+
+        <main class="conteudo-principal">
+            
+            <div class="container-dossie-caso">
+                
+                <div class="topo-dossie">
+                    <div>
+                        <h2>OPERANTE: TUTANCÂMON</h2>
+                        <p class="meta-caso">REGISTRO: #019-AN | LOCALIZAÇÃO: CAMPUS UNIVERSITÁRIO</p>
+                    </div>
+                    <a href="/html/casos.html" class="btn-voltar-diretorio">📂 DIRETÓRIO DE CASOS</a>
+                </div>
+
+                <div class="abas-dossie">
+                    <button class="aba-btn ativa" data-aba="historico">[ 1. HISTÓRICO ]</button>
+                    <button class="aba-btn" data-aba="vitimas">[ 2. VÍTIMAS ]</button>
+                    <button class="aba-btn" data-aba="evidencias">[ 3. EVIDÊNCIAS ]</button>
+                    <button class="aba-btn" data-aba="mapa">[ 4. MAPA TÁTICO ]</button> 
+                    <button class="aba-btn" data-aba="conclusao">[ 5. CONCLUSÃO ]</button> 
+                </div>
+
+                <div id="aba-historico" class="conteudo-aba ativa">
+                    <h3>[ BREIFING E RELATÓRIO DE INCIDENTE ]</h3>
+                    <div class="documento-texto">
+                        <p><strong>DATA DO REGISTRO:</strong> 14 de Outubro | <strong>STATUS:</strong> ALERTA ATIVO</p>
+                        <p class="paragrafo-relatorio">
+                            O monitoramento da rede A.S.T.R.A. detectou picos anômalos de histeria e pânico agudo concentrados no pavilhão de laboratórios do Campus Universitário. Varreduras iniciais em campo indicam um forte rastro espectral residual flutuando pelas tubulações e salas de aula escuras.
+                        </p>
+                        <p class="paragrafo-relatorio">
+                            <strong>Análise de Comportamento Anômalo:</strong> A assinatura bioenergética colhida coincide com a entidade catalogada como <em>Tutancâmon</em>. Esta atrocidade se alimenta diretamente do medo humano. Relatórios táticos confirmam que quanto mais pânico ela absorve, e quanto mais medo se propaga pelo ambiente universitário, mais densa, violenta e forte a entidade se torna.
+                        </p>
+                        <blockquote class="nota-diretoria">
+                            "Aguardando a coleta de amostras físicas e ectoplasmáticas pela equipe de campo para traçar o plano de contenção." — Comando Central
+                        </blockquote>
+                    </div>
+                </div>
+
+                <div id="aba-vitimas" class="conteudo-aba">
+                    <h3>[ CADASTRO DE INDIVÍDUOS AFETADOS ]</h3>
+                    <div class="grade-vitimas">
+                        
+                        <div class="card-vitima">
+                            <div class="avatar-vitima">👤</div>
+                            <div class="dados-vitima">
+                                <h5>Prof. Arthur Mendes (42 anos)</h5>
+                                <p><strong>OCUPAÇÃO:</strong> Coordenador do Laboratório de Química</p>
+                                <p class="status-v-alerta"><strong>STATUS:</strong> HOSPITALIZADO (ESTADO CATATÔNICO)</p>
+                                <p class="detalhe-v">Encontrado encolhido sob a mesa do laboratório. Apresenta taquicardia severa e dilatação permanente das pupilas. Não reage a estímulos verbais, apenas repete frases desconexas sobre 'a escuridão faminta'.</p>
+                            </div>
+                        </div>
+
+                        <div class="card-vitima">
+                            <div class="avatar-vitima">👤</div>
+                            <div class="dados-vitima">
+                                <h5>Mariana Costa (21 anos)</h5>
+                                <p><strong>OCUPAÇÃO:</strong> Estudante de Ciência da Computação</p>
+                                <p class="status-v-alerta"><strong>STATUS:</strong> DESAPARECIDA</p>
+                                <p class="detalhe-v">Vista pela última vez entrando nas salas de servidores do bloco B após o horário de fechamento. Seus pertences foram encontrados intactos, mas a câmera de segurança próxima registrou falhas severas de estática magnética no exato minuto de sua entrada.</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="aba-evidencias" class="conteudo-aba">
+                    <h3>[ COFRE DE EVIDÊNCIAS COLETADAS ]</h3>
+                    <div class="grade-evidencias">
+                        
+                        <div class="item-evidencia">
+                            <div class="box-foto-evidencia">
+                                <img src="/assets/imagens/interface/GraficoMedo.png" alt="Gráfico de Ondas">
+                                <div class="badge-evidencia">EVIDÊNCIA #01</div>
+                            </div>
+                            <div class="dados-evidencia">
+                                <h5>Frequência de Ondas de Medo</h5>
+                                <p>Varredura captada pelos sensores ectoplasmáticos da agência no pátio central. O gráfico aponta um disparo de 420Hz no momento do surto do Professor Arthur.</p>
+                            </div>
+                        </div>
+
+                        <div class="item-evidencia">
+                            <div class="box-foto-evidencia">
+                                <img src="/assets/imagens/interface/TranscricaoAudio.png" alt="Áudio">
+                                <div class="badge-evidencia">EVIDÊNCIA #02</div>
+                            </div>
+                            <div class="dados-evidencia">
+                                <h5>Transcrição do Áudio da Câmera B3</h5>
+                                <p>"Ruído mecânico abafado seguido por som de passos pesados arrastando correntes. Segundos antes do sumiço da estudante, ouve-se um sussurro sintetizado captado no microfone ambiente."</p>
+                                
+                                <audio id="audio-camera-b3" src="/assets/audio/Camera-b3.mp3"></audio>
+        
+                                <button class="btn-acao" onclick="document.getElementById('audio-camera-b3').play()" style="margin-top: 15px; width: 100%; border: 1px solid var(--verde-terminal); background: transparent; color: var(--verde-terminal); padding: 10px; cursor: pointer; font-family: 'Courier New', Courier, monospace; font-weight: bold; text-align: center;">
+                                    ▶ [ INICIAR REPRODUÇÃO DA FITA ]
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="aba-mapa" class="conteudo-aba">
+                    <h3>[ REDE DE VARREDURA - GRID TÁTICO DE ÁREA ]</h3>
+                    <p style="color: #00aa44; font-size: 0.9rem; margin-bottom: 20px;">Malha de rastreamento de satélite ativa sobreposta ao perímetro tático.</p>
+                    
+                    <div class="container-mapa-geral" style="padding: 0; border: none; background: transparent;">
+                        <div class="mapa-wrapper" style="border: 1px solid var(--verde-terminal);">
+                            
+                            <img src="/assets/imagens/interface/Mapa Duke Hills.png" alt="Mapa Tático Duke Hills" class="img-mapa-fundo" id="imagemMapaLocal">
+                            
+                            <div class="overlay-grid"></div>
+
+                            <!-- 1. Casa de Mariana -->
+                            <div class="marcador-tatico" style="top: 47%; left: 18%;" onclick="abrirModalPista('Casa de Mariana', 'Residência da estudante desaparecida. Sinais de arrombamento não detectados, mas há vestígios de insônia severa e cadernos com desenhos de sarcófagos.', '🟡 STATUS: ISOLADO')">
+                                <div class="pulso-radar"></div>
+                                <span class="label-marcador">CASA DE MARIANA</span>
+                            </div>
+
+                            <!-- 2. Universidade de Duke Hills -->
+                            <div class="marcador-tatico marcador-seguro" style="top: 39%; left: 50%;" onclick="abrirModalPista('Universidade de Duke Hills', 'Prédio principal do campus. Aulas suspensas após os surtos de histeria coletiva no pátio central.', '🟢 STATUS: SEGURO')">
+                                <div class="pulso-radar pulso-verde-claro"></div>
+                                <span class="label-marcador">UNIVERSIDADE</span>
+                            </div>
+
+                            <!-- 3. Hospital -->
+                            <div class="marcador-tatico marcador-seguro" style="top: 72%; left: 52%;" onclick="abrirModalPista('Hospital Central', 'Local onde o Professor Arthur Mendes encontra-se hospitalizado em estado catatônico sob vigilância da agência.', '🟢 STATUS: SEGURO')">
+                                <div class="pulso-radar pulso-verde-claro"></div>
+                                <span class="label-marcador">HOSPITAL</span>
+                            </div>
+
+                            <!-- 4. Sala de Servidores -->
+                            <div class="marcador-tatico marcador-alerta" style="top: 30%; left: 70%;" onclick="abrirModalPista('Sala de Servidores', 'Última localização confirmada de Mariana Costa. Assinatura térmica anômala e distorção espacial altamente ativa. Entidade possivelmente presente.', '🔴 STATUS: PERIGO EXTREMO')">
+                                <div class="pulso-radar pulso-vermelho"></div>
+                                <span class="label-marcador">SALA DE SERVIDORES</span>
+                            </div>
+
+                            <!-- 5. Laboratório de Química -->
+                            <div class="marcador-tatico" style="top: 50%; left: 70%;" onclick="abrirModalPista('Laboratório de Química', 'Local do colapso do Prof. Mendes. Vestígios de ectoplasma cristalizado encontrados sob a mesa principal do laboratório.', '🟡 STATUS: ISOLADO')">
+                                <div class="pulso-radar"></div>
+                                <span class="label-marcador">LABORATÓRIO</span>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <div id="aba-conclusao" class="conteudo-aba">
+                    <h3>[ RESOLUÇÃO DA OPERAÇÃO ]</h3>
+                    
+                    <div id="tela-bloqueio-cripto" class="wrapper-centralizado">
+                        <div class="alerta-bloqueio-conclusao">
+                            <p class="icone-trava">⚠️</p>
+                            <h4>ARQUIVO SUSPENSO - INVESTIGAÇÃO EM CURSO</h4>
+                            <p class="descricao-aviso">
+                                A aba de encerramento e veredito final permanece trancada pelo sistema de criptografia A.S.T.R.A. até que a entidade seja devidamente contida, neutralizada e os rituais de banimento sejam executados in loco.
+                            </p>
+                            
+                            <div class="grupo-controles-autenticacao">
+                                <input type="text" id="chaveCripto" placeholder="INSIRA A CHAVE..." autocomplete="off" class="input-terminal-cripto">
+                                <button onclick="verificarChave()" class="btn-terminal-cripto">DESCRIPTOGRAFAR</button>
+                                <div id="erro-chave" class="msg-erro-autenticacao">[ FALHA NA AUTENTICAÇÃO - CHAVE INCORRETA ]</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="tela-registro-jogadores" class="painel-entrada-relatorio" style="display: none;">
+                        <h4 class="titulo-painel-registro">[ AUTENTICAÇÃO ACEITA - DIÁRIO DE BORDO LIBERADO ]</h4>
+                        <p class="instrucoes-painel-registro">
+                            Chave criptográfica correspondente. Como operantes oficiais deste caso, redijam abaixo o relatório tático detalhando como a criatura foi combatida, neutralizada ou contida em campo.
+                        </p>
+                        
+                        <div class="formulario-agencia">
+                            <div class="bloco-campo-texto">
+                                <label class="label-agencia">Requisito de banimento concluído:</label>
+                                <textarea id="inputBanimento" rows="4" placeholder="Descreva como a entidade foi enfraquecida, banida ou contida..." class="textarea-agencia"></textarea>
+                            </div>
+
+                            <div class="bloco-campo-texto">
+                                <label class="label-agencia">Destino da vítima:</label>
+                                <textarea id="inputVitima" rows="4" placeholder="Descreva o estado atual, resgate ou localização de Mariana Costa..." class="textarea-agencia"></textarea>
+                            </div>
+                            
+                            <button onclick="gerarRelatorioFinal()" class="btn-submissao-log">
+                                💾 REGISTRAR LOG E ENCERRAR OPERAÇÃO
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="conteudo-protegido" class="painel-dossie-final" style="display: none;">
+                        <div class="documento-texto-final">
+                            <h4 class="titulo-dossie-final">📂 [ ARQUIVO DE CASO ATUALIZADO E OFICIALMENTE ARQUIVADO ]</h4>
+                            <p class="subtitulo-dossie-final">[ DEPOIMENTO DOS OPERANTES DE CAMPO DEVIDAMENTE REGISTRADO ]:</p>
+                            
+                            <div class="caixa-log-compilado">
+                                <p class="linha-log"><strong class="tag-verde">REQUISITO DE BANIMENTO CONCLUÍDO:</strong> <span id="outBanimento"></span></p>
+                                <p class="linha-log"><strong class="tag-verde">DESTINO DA VÍTIMA:</strong> <span id="outVitima"></span></p>
+                            </div>
+                            
+                            <p id="status-final-operacao">➔ STATUS DA OPERAÇÃO: CONCLUÍDO E ARQUIVADO.</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </main>
+    </div>
+
+    <div id="modal-evidencia" class="modal-tatico-overlay" style="display: none;">
+        <div class="modal-tatico-conteudo">
+            <div class="modal-cabecalho">
+                <h3 id="modal-titulo">[ NOME DO LOCAL ]</h3>
+                <button onclick="fecharModalPista()" class="btn-fechar-modal">X</button>
+            </div>
+            <div class="modal-corpo">
+                <p id="modal-status" class="tag-status-modal">STATUS</p>
+                <p id="modal-descricao">Descrição detalhada do que foi encontrado no local...</p>
+                <div class="modal-acoes" style="margin-top: 20px; text-align: right;">
+                    <button class="btn-acao" style="background: transparent; border: 1px solid var(--verde-terminal); color: var(--verde-terminal); padding: 8px 15px; cursor: pointer;" onclick="fecharModalPista()">FECHAR ARQUIVO</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/js/main.js"></script>
+
+    <script>
+        function verificarChave() {
+            const input = document.getElementById('chaveCripto');
+            const erro = document.getElementById('erro-chave');
+            const telaBloqueio = document.getElementById('tela-bloqueio-cripto');
+            const telaRegistro = document.getElementById('tela-registro-jogadores');
+
+            const CHAVE_CORRETA = "TANTUM";
+
+            if (input.value.trim().toUpperCase() === CHAVE_CORRETA) {
+                telaBloqueio.style.display = 'none';
+                telaRegistro.style.display = 'block';
+                document.getElementById('inputBanimento').focus();
+            } else {
+                erro.style.display = 'block';
+                input.value = '';
+                input.focus();
+                setTimeout(() => {
+                    erro.style.display = 'none';
+                }, 3000);
+            }
+        }
+
+        function gerarRelatorioFinal() {
+            const txtBanimento = document.getElementById('inputBanimento').value.trim();
+            const txtVitima = document.getElementById('inputVitima').value.trim();
+            
+            const outBanimento = document.getElementById('outBanimento');
+            const outVitima = document.getElementById('outVitima');
+            
+            const telaRegistro = document.getElementById('tela-registro-jogadores');
+            const conteudoFinal = document.getElementById('conteudo-protegido');
+
+            if (txtBanimento === "" || txtVitima === "") {
+                alert("[ALERTA] Ambas as seções do diário de bordo precisam ser preenchidas pelos operantes.");
+                return;
+            }
+
+            outBanimento.textContent = txtBanimento;
+            outVitima.textContent = txtVitima;
+
+            telaRegistro.style.display = 'none';
+            conteudoFinal.style.display = 'block';
+        }
+
+        document.getElementById('chaveCripto').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                verificarChave();
+            }
+        });
+
+        function abrirModalPista(titulo, descricao, status) {
+            document.getElementById('modal-titulo').textContent = '[ ' + titulo.toUpperCase() + ' ]';
+            document.getElementById('modal-descricao').textContent = descricao;
+            document.getElementById('modal-status').textContent = status;
+            
+            const statusElement = document.getElementById('modal-status');
+            if (status.includes('ISOLADO') || status.includes('ALERTA')) {
+                statusElement.style.color = '#ffaa00';
+                statusElement.style.borderColor = '#ffaa00';
+            } else if (status.includes('ATIVO') || status.includes('PERIGO')) {
+                statusElement.style.color = '#ff3333';
+                statusElement.style.borderColor = '#ff3333';
+            } else {
+                statusElement.style.color = '#00ff66';
+                statusElement.style.borderColor = '#00ff66';
+            }
+
+            document.getElementById('modal-evidencia').style.display = 'flex';
+        }
+
+        function fecharModalPista() {
+            document.getElementById('modal-evidencia').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

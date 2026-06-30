@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.S.T.R.A. - Descriptografia Tantum</title>
+    <link rel="icon" type="image/png" href="/assets/imagens/interface/A.S.T.R.A.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/casos.css"> 
+    <link rel="stylesheet" href="/css/descriptografia.css"> 
+</head>
+<body>
+
+    <div id="barra-status">
+        <span>AGENTE AUTENTICADO: [ NÍVEL 1 ]</span>
+        <span>STATUS DO SISTEMA: <span class="operacional">OPERACIONAL</span></span>
+        <span>CONEXÃO: SEGURA (SSL-CRYPT)</span>
+    </div>
+
+    <div class="container-dashboard">
+        
+        <aside class="painel-lateral">
+            <div class="logo-container">
+                <a href="/html/dashboard.html">
+                    <img src="/assets/imagens/interface/A.S.T.R.A.png" alt="Logo A.S.T.R.A" style="cursor: pointer;">
+                </a>
+                <h2>A.S.T.R.A. Central</h2>
+            </div>
+            
+            <nav class="menu-agência">
+                <a href="/html/dashboard.html">Terminal Inicial</a>
+                <a href="/html/bestiario.html">Arquivo de Aberrações (Bestiário)</a>
+                <a href="/html/arsenal.html">Arsenal & Artefatos</a>
+                <a href="/html/casos.html">Arquivos de Casos</a>
+                <a href="/html/quadro-pistas.html">Quadro de Pistas Tático</a> 
+                <a href="/html/descriptografia.html" class="ativo">Módulo de Descriptografia</a>
+                <a href="/index.html" class="link-logoff">Encerrar Sessão [LOGOFF]</a>
+            </nav>
+        </aside>
+
+        <main class="conteudo-principal">
+            
+            <div class="container-descriptografia" style="padding: 20px;">
+                <h3>[ TERMINAL DE TRADUÇÃO MANUAL - ALFABETO DOS SUSSURROS ]</h3>
+                <p>Selecione os caracteres rúnicos identificados em campo para reconstruir a matriz de texto legível.</p>
+
+                <div class="visor-traducao">
+                    <span class="prompt">&gt;</span>
+                    <div id="textoResultado" class="texto-digitado"></div>
+                    <span class="cursor-piscante">_</span>
+                </div>
+
+                <div class="controles-visor">
+                    <button class="btn-controle" onclick="adicionarEspaco()">⎵ ESPAÇO</button>
+                    <button class="btn-controle btn-alerta" onclick="apagarUltimo()">< Apagar</button>
+                    <button class="btn-controle btn-perigo" onclick="limparTudo()">❌ LIMPAR TERMINAL</button>
+                </div>
+
+                <div class="teclado-runico">
+                    <button class="tecla-runa" data-letra="A" onclick="digitarLetra('A')">
+                        <img src="/assets/imagens/alfabeto/a.png" alt="Runa A">
+                        <span class="legenda-mestre">A</span>
+                    </button>
+                    <button class="tecla-runa" data-letra="B" onclick="digitarLetra('B')">
+                        <img src="/assets/imagens/alfabeto/b.png" alt="Runa B">
+                        <span class="legenda-mestre">B</span>
+                    </button>
+                    <button class="tecla-runa" data-letra="C" onclick="digitarLetra('C')">
+                        <img src="/assets/imagens/alfabeto/c.png" alt="Runa C">
+                        <span class="legenda-mestre">C</span>
+                    </button>
+                    <button class="tecla-runa" data-letra="D" onclick="digitarLetra('D')">
+                        <img src="/assets/imagens/alfabeto/d.png" alt="Runa D">
+                        <span class="legenda-mestre">D</span>
+                    </button>
+                    <button class="tecla-runa" data-letra="E" onclick="digitarLetra('E')">
+                        <img src="/assets/imagens/alfabeto/e.png" alt="Runa E">
+                        <span class="legenda-mestre">E</span>
+                    </button>
+                    <button class="tecla-runa" data-letra="F" onclick="digitarLetra('F')">
+                        <img src="/assets/imagens/alfabeto/f.png" alt="Runa F">
+                        <span class="legenda-mestre">F</span>
+                    </button>
+                    <button class="tecla-runa" data-letra="G" onclick="digitarLetra('G')">
+                        <img src="/assets/imagens/alfabeto/g.png" alt="Runa G">
+                        <span class="legenda-mestre">G</span>
+                    </button>
+                    <button class="tecla-runa" data-letra="H" onclick="digitarLetra('H')">
+                        <img src="/assets/imagens/alfabeto/h.png" alt="Runa H">
+                        <span class="legenda-mestre">H</span>
+                    </button>
+                    <button class="tecla-runa" data-letra="I" onclick="digitarLetra('I')">
+                        <img src="/assets/imagens/alfabeto/i.png" alt="Runa I">
+                        <span class="legenda-mestre">I</span>
+                    </button>
+                    <button class="tecla-runa" data-letra="J" onclick="digitarLetra('J')">
+                        <img src="/assets/imagens/alfabeto/j.png" alt="Runa J">
+                        <span class="legenda-mestre">J</span>
+                    </button>
+                    <button class="tecla-runa" data-letra="K" onclick="digitarLetra('K')">
+                        <img src="/assets/imagens/alfabeto/k.png" alt="Runa K">
+                        <span class="legenda-mestre">K</span>
+                    </button>
+                    <button class="tecla-runa" data-letra="L" onclick="digitarLetra('L')">
+                        <img src="/assets/imagens/alfabeto/l.png" alt="Runa L">
+                        <span class="legenda-mestre">L</span>
+                    </button>
+                    <button class="tecla-runa" data-letra="M" onclick="digitarLetra('M')">
+                        <img src="/assets/imagens/alfabeto/m.png" alt="Runa M">
+                        <span class="legenda-mestre">M</span>
+                    </button>
+
+                    <button class="tecla-runa" data-letra="N" onclick="digitarLetra('N')">
+                        <img src="/assets/imagens/alfabeto/n.png" alt="Runa N">
+                        <span class="legenda-mestre">N</span>
+                    </button>
+                    <button class="tecla-runa" data-letra="O" onclick="digitarLetra('O')">
+                        <img src="/assets/imagens/alfabeto/o.png" alt="Runa O">
+                        <span class="legenda-mestre">O</span>
+                    </button>
+                    <button class="tecla-runa" data-letra="P" onclick="digitarLetra('P')">
+                        <img src="/assets/imagens/alfabeto/p.png" alt="Runa P">
+                        <span class="legenda-mestre">P</span>
+                    </button>
+                    <button class="tecla-runa" data-letra="Q" onclick="digitarLetra('Q')">
+                        <img src="/assets/imagens/alfabeto/q.png" alt="Runa Q">
+                        <span class="legenda-mestre">Q</span>
+                    </button>
+                    <button class="tecla-runa" data-letra="R" onclick="digitarLetra('R')">
+                        <img src="/assets/imagens/alfabeto/r.png" alt="Runa R">
+                        <span class="legenda-mestre">R</span>
+                    </button>
+                    <button class="tecla-runa" data-letra="S" onclick="digitarLetra('S')">
+                        <img src="/assets/imagens/alfabeto/s.png" alt="Runa S">
+                        <span class="legenda-mestre">S</span>
+                    </button>
+                    <button class="tecla-runa" data-letra="T" onclick="digitarLetra('T')">
+                        <img src="/assets/imagens/alfabeto/t.png" alt="Runa T">
+                        <span class="legenda-mestre">T</span>
+                    </button>
+                    <button class="tecla-runa" data-letra="U" onclick="digitarLetra('U')">
+                        <img src="/assets/imagens/alfabeto/u.png" alt="Runa U">
+                        <span class="legenda-mestre">U</span>
+                    </button>
+                    <button class="tecla-runa" data-letra="V" onclick="digitarLetra('V')">
+                        <img src="/assets/imagens/alfabeto/v.png" alt="Runa V">
+                        <span class="legenda-mestre">V</span>
+                    </button>
+                    <button class="tecla-runa" data-letra="X" onclick="digitarLetra('X')">
+                        <img src="/assets/imagens/alfabeto/x.png" alt="Runa X">
+                        <span class="legenda-mestre">X</span>
+                    </button>
+                    <button class="tecla-runa" data-letra="Y" onclick="digitarLetra('Y')">
+                        <img src="/assets/imagens/alfabeto/y.png" alt="Runa Y">
+                        <span class="legenda-mestre">Y</span>
+                    </button>
+                    <button class="tecla-runa" data-letra="W" onclick="digitarLetra('W')">
+                        <img src="/assets/imagens/alfabeto/w.png" alt="Runa W">
+                        <span class="legenda-mestre">W</span>
+                    </button>
+                    <button class="tecla-runa" data-letra="Z" onclick="digitarLetra('Z')">
+                        <img src="/assets/imagens/alfabeto/z.png" alt="Runa Z">
+                        <span class="legenda-mestre">Z</span>
+                    </button>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script>
+    const visor = document.getElementById('textoResultado');
+
+    // Função para tratar inserção de letras (usada pelos botões da tela e pelo teclado físico)
+    function digitarLetra(letra) {
+        visor.textContent += letra.toUpperCase();
+    }
+
+    // Função para o botão ou tecla de Espaço
+    function adicionarEspaco() {
+        visor.textContent += ' ';
+    }
+
+    // Função para apagar o último caractere (botão ou Backspace)
+    function apagarUltimo() {
+        let textoAtual = visor.textContent;
+        visor.textContent = textoAtual.substring(0, textoAtual.length - 1);
+    }
+
+    // Função para limpar todo o terminal
+    function limparTudo() {
+        if(confirm("[ALERTA] Deseja limpar todo o progresso de tradução atual?")) {
+            visor.textContent = '';
+        }
+    }
+
+    // --- NOVA LOGICA: CAPTURA DO TECLADO FÍSICO ---
+    window.addEventListener('keydown', function(evento) {
+        // Ignora se o usuário estiver usando combinações com Command (Mac) ou Ctrl (Windows) para não quebrar atalhos do navegador
+        if (evento.metaKey || evento.ctrlKey || evento.altKey) {
+            return;
+        }
+
+        const tecla = evento.key;
+
+        // Se pressionar a barra de espaço
+        if (tecla === ' ') {
+            evento.preventDefault(); // Impede a página de rolar para baixo ao apertar espaço
+            adicionarEspaco();
+        } 
+        // Se pressionar a tecla Backspace (Apagar)
+        else if (tecla === 'Backspace') {
+            evento.preventDefault();
+            apagarUltimo();
+        } 
+        // Se for uma letra de A a Z (usando expressão regular para validar)
+        else if (tecla.length === 1 && /[a-zA-Z]/.test(tecla)) {
+            digitarLetra(tecla);
+        }
+    });
+    </script>
+</body>
+</html>

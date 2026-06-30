@@ -1,0 +1,495 @@
+/* ==========================================================================
+   PASTA DE DETALHES DO CASO - A.S.T.R.A. SYSTEM
+   ========================================================================== */
+
+.container-dossie-caso {
+    width: 100%;
+    background-color: #030303;
+    border: 1px solid #ffaa00; /* Borda laranja de investigação ativa */
+    padding: 30px;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(255, 170, 0, 0.05);
+}
+
+.topo-dossie {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ffaa00;
+    padding-bottom: 20px;
+    margin-bottom: 25px;
+}
+
+.topo-dossie h2 {
+    color: #ffffff;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+}
+
+.meta-caso {
+    font-size: 0.85rem;
+    color: #ffaa00;
+    margin-top: 5px;
+    letter-spacing: 1px;
+}
+
+.btn-voltar-diretorio {
+    background-color: transparent;
+    color: #ffaa00;
+    border: 1px solid #ffaa00;
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-weight: bold;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+}
+
+.btn-voltar-diretorio:hover {
+    background-color: #ffaa00;
+    color: #000000;
+    box-shadow: 0 0 10px rgba(255, 170, 0, 0.3);
+}
+
+/* Painel de Abas Estilo Pastas de Polícia */
+.abas-dossie {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #00aa44;
+    padding-bottom: 0px;
+}
+
+.aba-btn {
+    background-color: #070707;
+    border: 1px solid #005522;
+    border-bottom: none;
+    color: #00aa44;
+    padding: 12px 20px;
+    font-family: inherit;
+    font-size: 0.85rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.aba-btn:hover, .aba-btn.ativa {
+    background-color: #001104;
+    color: #00ff66;
+    border-color: #00aa44;
+    box-shadow: 0 -2px 8px rgba(0, 255, 102, 0.1);
+}
+
+.aba-btn.ativa {
+    position: relative;
+    top: 1px; /* Encaixa em cima da borda inferior */
+    background-color: #010101;
+    color: #00ff66;
+    border-color: #00aa44 #00aa44 #010101 #00aa44;
+}
+
+/* Controlos de Exibição das Abas */
+.conteudo-aba {
+    display: none; /* Escondido por padrão */
+    animation: fadeIn 0.3s ease;
+}
+
+.conteudo-aba.ativa {
+    display: block; /* Revelado pelo JS */
+}
+
+.conteudo-aba h3 {
+    font-size: 1.1rem;
+    color: #00ff66;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
+/* Aba 1: Documento de Texto */
+.documento-texto {
+    background-color: #050505;
+    border: 1px solid #005522;
+    padding: 25px;
+    line-height: 1.7;
+    font-size: 0.95rem;
+    color: #00dd55;
+}
+
+.paragrafo-relatorio {
+    margin-top: 15px;
+}
+
+.paragrafo-relatorio em {
+    color: #ffaa00;
+}
+
+.nota-diretoria {
+    margin-top: 25px;
+    border-left: 3px dashed #ffaa00;
+    padding-left: 15px;
+    color: #ffaa00;
+    font-style: italic;
+}
+
+/* Aba 2: Grade de Vítimas */
+.grade-vitimas {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.card-vitima {
+    display: flex;
+    gap: 20px;
+    background-color: #050505;
+    border: 1px solid #005522;
+    padding: 20px;
+    border-radius: 2px;
+}
+
+.avatar-vitima {
+    font-size: 2.5rem;
+    background-color: #001104;
+    border: 1px solid #00aa44;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    height: fit-content;
+}
+
+.dados-vitima h5 {
+    font-size: 1.1rem;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.dados-vitima p {
+    font-size: 0.85rem;
+    color: #00aa44;
+    margin-bottom: 5px;
+}
+
+.status-v-alerta {
+    color: #ff3333 !important;
+    font-weight: bold;
+}
+
+.detalhe-v {
+    margin-top: 10px;
+    line-height: 1.5;
+    color: #00dd55 !important;
+}
+
+/* Aba 3: Grade de Evidências */
+.grade-evidencias {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 25px;
+}
+
+.item-evidencia {
+    background-color: #050505;
+    border: 1px solid #005522;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.box-foto-evidencia {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    background-color: #000000;
+    border-bottom: 1px solid #005522;
+}
+
+.box-foto-evidencia img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+    filter: grayscale(100%) sepia(100%) hue-rotate(85deg) brightness(0.8) contrast(140%);
+}
+
+.badge-evidencia {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background-color: #00aa44;
+    color: #000000;
+    font-weight: bold;
+    font-size: 0.75rem;
+    padding: 3px 8px;
+}
+
+.dados-evidencia {
+    padding: 15px;
+}
+
+.dados-evidencia h5 {
+    color: #ffffff;
+    font-size: 1rem;
+    margin-bottom: 8px;
+}
+
+.dados-evidencia p {
+    font-size: 0.85rem;
+    color: #00aa44;
+    line-height: 1.5;
+}
+
+/* ==========================================================================
+   Aba 4: Módulos de Resolução (Centralização e Fluxo)
+   ========================================================================== */
+
+.wrapper-centralizado {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 30px 0;
+}
+
+.bloco-conclusao-status {
+    background-color: #050505;
+    border: 1px dashed #ff3333;
+    padding: 40px;
+    text-align: center;
+}
+
+.icone-trava {
+    font-size: 3rem;
+    margin: 0 0 15px 0;
+    animation: pulso 2s infinite;
+}
+
+.alerta-bloqueio-conclusao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.alerta-bloqueio-conclusao h4 {
+    color: #ff3333;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+    margin: 0 0 15px 0;
+    line-height: 1.4;
+    width: 100%;
+}
+
+.descricao-aviso {
+    font-size: 0.9rem;
+    color: #555555;
+    max-width: 520px;
+    margin: 0 0 30px 0;
+    line-height: 1.6;
+}
+
+/* Inputs e Botões do Terminal de Criptografia */
+.grupo-controles-autenticacao {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+}
+
+.input-terminal-cripto {
+    background: #000;
+    border: 1px solid #ff3333;
+    color: #fff;
+    padding: 14px;
+    text-align: center;
+    font-family: 'Courier New', monospace;
+    font-size: 1.1rem;
+    width: 280px;
+    text-transform: uppercase;
+    box-sizing: border-box;
+}
+
+.btn-terminal-cripto {
+    background: #200000;
+    border: 1px solid #ff3333;
+    color: #ff3333;
+    padding: 14px 20px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    cursor: pointer;
+    width: 280px;
+    box-sizing: border-box;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+.msg-erro-autenticacao {
+    display: none;
+    color: #ff3333;
+    font-weight: bold;
+    margin-top: 10px;
+    font-size: 0.85rem;
+    width: 100%;
+}
+
+/* Painel do Ato 2: Formulários Compartimentados */
+.painel-entrada-relatorio {
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.titulo-painel-registro {
+    color: #00ff66;
+    margin-bottom: 12px;
+    font-family: 'Courier New', monospace;
+    letter-spacing: 1px;
+}
+
+.instrucoes-painel-registro {
+    color: #a0a0a0;
+    font-size: 0.95rem;
+    margin-bottom: 25px;
+    line-height: 1.6;
+    text-align: left;
+}
+
+.formulario-agencia {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    text-align: left;
+}
+
+.bloco-campo-texto {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.label-agencia {
+    color: #00ff66;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.textarea-agencia {
+    width: 100%;
+    background: #000;
+    border: 1px solid #00aa44;
+    color: #fff;
+    padding: 12px;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    line-height: 1.5;
+    resize: none;
+    box-sizing: border-box;
+}
+
+.btn-submissao-log {
+    background: #001104;
+    border: 1px solid #00aa44;
+    color: #00ff66;
+    padding: 14px;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.btn-submissao-log:hover {
+    background: #003311;
+    box-shadow: 0 0 10px rgba(0, 255, 102, 0.2);
+}
+
+/* Painel do Ato 3: Log Impresso Final */
+.painel-dossie-final {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.documento-texto-final {
+    border-left: 3px solid #00aa44;
+    text-align: left;
+    background: #030303;
+    padding: 25px;
+    border-radius: 4px;
+    border: 1px solid #111;
+    line-height: 1.7;
+    font-size: 0.95rem;
+    color: #00dd55;
+}
+
+.titulo-dossie-final {
+    color: #00ff66;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
+
+.subtitulo-dossie-final {
+    margin-bottom: 12px;
+    color: #00ff66;
+    font-weight: bold;
+}
+
+.caixa-log-compilado {
+    background: #000;
+    padding: 20px;
+    border: 1px dashed #005522;
+    margin-bottom: 25px;
+    font-family: 'Courier New', monospace;
+}
+
+.prefixo-teste {
+    color: #ffffff;
+    margin: 0 0 15px 0;
+    line-height: 1.6;
+}
+
+.linha-log {
+    color: #ffffff;
+    margin: 0 0 15px 0;
+    line-height: 1.6;
+    white-space: pre-wrap;
+}
+
+.linha-log:last-child {
+    margin-bottom: 0;
+}
+
+.tag-verde {
+    color: #00ff66;
+    font-weight: bold;
+}
+
+#status-final-operacao {
+    color: #ff3333;
+    font-weight: bold;
+    margin-top: 25px;
+    letter-spacing: 1px;
+}
+
+/* Animações Globais */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulso {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.7; }
+}

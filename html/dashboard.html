@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.S.T.R.A. - Painel de Controle</title>
+    <link rel="icon" type="image/png" href="/assets/imagens/interface/A.S.T.R.A.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dashboard.css?v=4">
+</head>
+<body>
+
+    <div id="barra-status">
+        <span>AGENTE AUTENTICADO: [ NÍVEL 1 ]</span>
+        <span>STATUS DO SISTEMA: <span class="operacional">OPERACIONAL</span></span>
+        <span>CONEXÃO: SEGURA (SSL-CRYPT)</span>
+    </div>
+
+    <div class="container-dashboard">
+        
+        <aside class="painel-lateral">
+            <div class="logo-container">
+                <a href="/html/dashboard.html">
+                    <img src="/assets/imagens/interface/A.S.T.R.A.png" alt="Logo A.S.T.R.A" style="cursor: pointer;">
+                </a>
+                <h2>A.S.T.R.A. Central</h2>
+            </div>
+            
+            <nav class="menu-agência">
+                <a href="/html/dashboard.html" class="ativo">Terminal Inicial</a>
+                <a href="/html/bestiario.html">Arquivo de Aberrações (Bestiário)</a>
+                <a href="/html/arsenal.html">Arsenal & Artefatos</a>
+                <a href="/html/casos.html">Arquivos de Casos</a>
+                <a href="/html/quadro-pistas.html">Quadro de Pistas Tático</a> 
+                <a href="/html/descriptografia.html">Módulo de Descriptografia</a>
+                <a href="/index.html" class="link-logoff">Encerrar Sessão [LOGOFF]</a>
+            </nav>
+        </aside>
+
+        <main class="conteudo-principal">
+            
+            <section class="bloco-notificacoes">
+                <h3>[ MURAL DE AVISOS DO DIRETOR ]</h3>
+                <div class="mensagem-diretoria">
+                    <p><strong>ATENÇÃO AGENTES:</strong> A atividade anômala na região metropolitana registrou um aumento de 42% nas últimas 72 horas. Investigação forense de campo é obrigatória antes de qualquer engajamento direto.</p>
+                    <p><em>"O desconhecido é apenas o que ainda não catalogamos." — Comando Central</em></p>
+                </div>
+            </section>
+
+            <section class="grade-casos">
+                <h3>[ ALERTAS DE RUPTURA EM ANDAMENTO ]</h3>
+                
+                <div class="cartao-container">
+                    <div class="cartao-caso urgente">
+                        <div class="cabecalho-caso">
+                            <span class="tag-alerta">ALERTA CATASTRÓFICO</span>
+                            <span class="codigo-caso">CÓDIGO: #019-AN</span>
+                        </div>
+                        <h4>Tutancâmon</h4>
+                        <p><strong>Última Localização:</strong> Campus Universitário</p>
+                        <p><strong>Status:</strong> Varreduras indicam rastro espectral residual. Aguardando coleta de amostras.</p>
+                    </div>
+
+                    <div class="cartao-caso investigacao">
+                        <div class="cabecalho-caso">
+                            <span class="tag-alerta">SOB INVESTIGAÇÃO</span>
+                            <span class="codigo-caso">CÓDIGO: #042-RE</span>
+                        </div>
+                        <h4>Sombra</h4>
+                        <p><strong>Última Localização:</strong> Setor Comercial Central</p>
+                        <p><strong>Status:</strong> Avistado recentemente por testemunhas traumáticas. Equipe local recuou.</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+/* ==========================================================================
+   VISUALIZADOR DE DOSSIÊS (PNG) - A.S.T.R.A. SYSTEM
+   ========================================================================== */
+
+/* Seção Principal do Visualizador */
+.visualizador-dossie {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 1000px; /* Limita a largura para a imagem não ficar gigantesca em monitores ultrawide */
+    margin: 0 auto;    /* Centraliza o bloco na tela */
+    background-color: #030303;
+    border: 1px solid #00aa44;
+    padding: 30px;
+    border-radius: 4px;
+    box-shadow: 0 0 20px rgba(0, 255, 102, 0.05);
+}
+
+/* Cabeçalho (Título e Botão de Voltar) */
+.cabecalho-documento {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px dashed #00aa44;
+    padding-bottom: 15px;
+}
+
+.info-documento h3 {
+    font-size: 1.2rem;
+    color: #00ff66;
+    letter-spacing: 2px;
+    text-shadow: 0 0 5px #00ff66;
+    margin-bottom: 5px;
+}
+
+.info-documento p {
+    font-size: 0.85rem;
+    color: #00aa44;
+    letter-spacing: 1px;
+}
+
+.info-documento strong {
+    color: #ffffff;
+}
+
+.btn-voltar {
+    background-color: transparent;
+    color: #00aa44;
+    border: 1px solid #00aa44;
+    padding: 8px 15px;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border-radius: 2px;
+    transition: all 0.2s ease;
+}
+
+.btn-voltar:hover {
+    background-color: #00ff66;
+    color: #000000;
+    box-shadow: 0 0 10px rgba(0, 255, 102, 0.4);
+}
+
+/* Moldura que guarda a sua imagem PNG */
+.moldura-evidencia {
+    position: relative;
+    background-color: #000000;
+    border: 2px solid #005522;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    overflow: hidden; /* Mantém a animação do scanner contida na caixa */
+}
+
+/* A sua imagem PNG do Dossiê */
+.imagem-dossie {
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    /* Adiciona um tom levemente esverdeado sobre a imagem para integrar ao monitor */
+    filter: sepia(30%) hue-rotate(75deg) contrast(110%);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
+}
+
+/* Efeito Animado de Scanner Forense */
+.scanner-linha {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: rgba(0, 255, 102, 0.5);
+    box-shadow: 0 0 15px 5px rgba(0, 255, 102, 0.3);
+    z-index: 10;
+    animation: escanear 4s ease-in-out infinite;
+}
+
+/* Painel de Ações e Botões de Download */
+.painel-acoes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.alerta-impressao {
+    font-size: 0.75rem;
+    color: #ff3333;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    animation: piscar-sutil 2s infinite;
+}
+
+.botoes-acao {
+    display: flex;
+    gap: 20px;
+}
+
+.btn-acao {
+    background-color: #00aa44;
+    color: #000000;
+    border: 1px solid #00ff66;
+    padding: 10px 20px;
+    font-family: inherit;
+    font-weight: bold;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    text-decoration: none; /* Para a tag <a> de download */
+    border-radius: 2px;
+    transition: all 0.2s ease;
+}
+
+.btn-acao:hover {
+    background-color: #00ff66;
+    box-shadow: 0 0 15px rgba(0, 255, 102, 0.4);
+}
+
+/* Keyframes do Efeito de Scanner */
+@keyframes escanear {
+    0% { top: 0%; opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { top: 100%; opacity: 0; }
+}
+
+@keyframes piscar-sutil {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A.S.T.R.A. - Arquivo de Aberrações</title>
+    <link rel="icon" type="image/png" href="/assets/imagens/interface/A.S.T.R.A.png">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/dashboard.css">
+    <link rel="stylesheet" href="/css/bestiario.css"> 
+</head>
+<body>
+
+    <div id="barra-status">
+        <span>AGENTE AUTENTICADO: [ NÍVEL 1 ]</span>
+        <span>STATUS DO SISTEMA: <span class="operacional">OPERACIONAL</span></span>
+        <span>CONEXÃO: SEGURA (SSL-CRYPT)</span>
+    </div>
+
+    <div class="container-dashboard">
+        
+        <aside class="painel-lateral">
+            <div class="logo-container">
+                <a href="/html/dashboard.html">
+                    <img src="/assets/imagens/interface/A.S.T.R.A.png" alt="Logo A.S.T.R.A" style="cursor: pointer;">
+                </a>
+                <h2>A.S.T.R.A. Central</h2>
+            </div>
+            
+            <nav class="menu-agência">
+                <a href="/html/dashboard.html">Terminal Inicial</a>
+                <a href="/html/bestiario.html" class="ativo">Arquivo de Aberrações (Bestiário)</a>
+                <a href="/html/arsenal.html">Arsenal & Artefatos</a>
+                <a href="/html/casos.html">Arquivos de Casos</a>
+                <a href="/html/quadro-pistas.html">Quadro de Pistas Tático</a> 
+                <a href="/html/descriptografia.html">Módulo de Descriptografia</a>
+                <a href="/index.html" class="link-logoff">Encerrar Sessão [LOGOFF]</a>
+            </nav>
+        </aside>
+
+        <main class="conteudo-principal">
+            
+            <section class="bloco-pesquisa">
+                <h3>[ BANCO DE DADOS DE ANOMALIAS ]</h3>
+                <div class="controles-busca">
+                    <input type="text" id="busca-anomalia" placeholder="Buscar por codinome, fraqueza ou id...">
+                    <select id="filtro-classe">
+                        <option value="todos">Todas as Classes</option>
+                        <option value="alfa">Classe Alfa</option>
+                        <option value="beta">Classe Beta</option>
+                        <option value="omega">Classe Ômega</option>
+                        <option value="delta">Classe Delta</option>
+                    </select>
+                    <button class="btn-buscar">FILTRAR DADOS</button>
+                </div>
+            </section>
+
+            <section class="grade-bestiario">
+                
+                <article class="ficha-monstro delta" data-nome="Tutancâmon" data-classe="delta">
+                    <div class="foto-evidencia">
+                        <img src="/assets/imagens/monstros/tutancamon.png" alt="Captura de tela de segurança">
+                        <div class="tarja-classificacao">Delta</div>
+                    </div>
+                    <div class="dados-monstro">
+                        <h4>Tutancâmon</h4>
+                        <p class="registro"><strong>REGISTRO:</strong> #019-AN</p>
+                        <p class="status-ativo"><strong>STATUS:</strong> ALERTA ATIVO</p> 
+                        <p class="descricao-curta">Esta atrocidade se alimenta do medo, quanto mais ela absorve e quanto mais medo existe no ambiente mais forte o Tutancâmon fica.</p>
+                        <a href="/html/dossie-tutancamon.html" class="btn-dossie">[ ACESSAR DOSSIÊ COMPLETO ]</a>
+                    </div>
+                </article>
+
+                <article class="ficha-monstro beta" data-nome="Sombra" data-classe="beta">
+                    <div class="foto-evidencia">
+                        <img src="/assets/imagens/monstros/Sombra.png" alt="Foto de evidência corrompida">
+                        <div class="tarja-classificacao">Beta</div>
+                    </div>
+                    <div class="dados-monstro">
+                        <h4>Sombra</h4>
+                        <p class="registro"><strong>REGISTRO:</strong> #042-RE</p>
+                        <p class="status-neutralizado"><strong>STATUS:</strong> NEUTRALIZADO</p>
+                        <p class="descricao-curta">Este fantasma atormenta pessoas, e aparece apenas onde há escuridão. A luz não a fere, mas lhe faz desaparecer.</p>
+                        <a href="/html/dossie-sombra.html" class="btn-dossie">[ ACESSAR DOSSIÊ COMPLETO ]</a>
+                    </div>
+                </article>
+
+                <article class="ficha-monstro confidencial">
+                    <div class="foto-evidencia bloqueada">
+                        <span class="icone-cadeado">🔒</span>
+                    </div>
+                    <div class="dados-monstro">
+                        <h4>[ DADOS REDIGIDOS ]</h4>
+                        <p class="registro"><strong>REGISTRO:</strong> [REMOVIDO]</p>
+                        <p class="status-desconhecido"><strong>STATUS:</strong> DESCONHECIDO</p>
+                        <p class="descricao-curta">Você não possui autorização de segurança nível 3 para visualizar este registro de ruptura.</p>
+                        <button class="btn-dossie bloqueado" disabled>[ ACESSO NEGADO ]</button>
+                    </div>
+                </article>
+
+            </section>
+        </main>
+    </div>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
